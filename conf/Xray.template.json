@@ -20,7 +20,7 @@
         {
             "listen": "0.0.0.0",
             "port": 12345,
-            "protocol": "vmess",
+            "protocol": "vless",
             "settings": {
                 "clients": [
                     {
@@ -34,7 +34,7 @@
                 "wsSettings": {
                     "acceptProxyProtocol": true,
                     "path": "${Xray_Path}",
-                },
+                }
             }
         }
     ],
