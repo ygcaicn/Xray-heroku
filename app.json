@@ -1,0 +1,34 @@
+{
+  "name": "Xray快速部署",
+  "description": "Deploy Xray to Heroku.",
+  "keywords": ["V2ray", "Xray"],
+  "env": {
+    "ProxySite": {
+      "description": "反代一个网站，例如：www.ietf.org，不填写表示使用本地静态网页文件。",
+      "value": "www.ietf.org"
+    },
+
+    "UUID": {
+      "description": "Vless uuid（http://www.uuid.online/在线生成）",
+      "value": "5c301bb8-6c77-41a0-a606-4ba11bbab084"
+    },
+
+    "Xray_Path": {
+      "description": "Path路径，默认/s233,为了安全你也可以使用uuid替换s233，/不能少。如果开启反代，不要与反代网站存在的uri相同",
+      "value": "/s233"
+    },
+    
+    "Share_Path": {
+      "description": "Share path, /share233订阅链接，/share233/vless.png二维码",
+      "value": "/share233"
+    },
+
+    "VER": {
+       "description": "Xray版本，默认latest安装最新版本，可以去https://github.com/XTLS/Xray-core/releases选择版本 （例如：1.2.2)",
+       "value": "latest"
+     }
+  },
+  "website": "",
+  "repository": "",
+  "stack": "container"
+ }
