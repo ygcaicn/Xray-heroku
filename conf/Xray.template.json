@@ -26,7 +26,8 @@
                     {
                         "id": "${UUID}"
                     }
-                ]
+                ],
+                "decryption": "none"
             },
             "streamSettings": {
                 "network": "ws",
