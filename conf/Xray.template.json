@@ -33,7 +33,7 @@
                 "network": "ws",
                 "security": "none",
                 "wsSettings": {
-                    "acceptProxyProtocol": true,
+                    "acceptProxyProtocol": false,
                     "path": "${Xray_Path}"
                 }
             }
