@@ -30,7 +30,7 @@
             },
             "streamSettings": {
                 "network": "ws",
-                "security": "none"
+                "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": true,
                     "path": "${Xray_Path}",

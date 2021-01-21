@@ -75,6 +75,7 @@ else
   path=$(echo -n "${Xray_Path}" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
   link="vless://${UUID}@${AppName}.herokuapp.com:443?path=${path}&security=tls&encryption=none&type=ws#${AppName}-herokuapp" 
   echo -n "${link}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
+  cat /wwwroot/${Share_Path}/index.html
   echo -n "${link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vless.png
 fi
 

@@ -7,10 +7,10 @@
       "description": "请输入最上方填写的App Name，用于生成配置和二维码，如果不想生成输入no",
       "value": "no"
     },
-    
+
     "ProxySite": {
       "description": "反代一个网站，例如：www.ietf.org，不填写表示使用本地静态网页文件。",
-      "value": "www.ietf.org"
+      "value": "mirror.umd.edu"
     },
 
     "UUID": {
