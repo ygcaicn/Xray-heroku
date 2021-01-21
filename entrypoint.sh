@@ -30,12 +30,13 @@ fi
 
 mkdir /xraybin
 cd /xraybin
-RAY_URL="https://github.com/XTLS/Xray-core/releases/download/${V_VER}/Xray-linux-64.zip"
+RAY_URL="https://github.com/XTLS/Xray-core/releases/download/${VER}/Xray-linux-64.zip"
 echo ${RAY_URL}
 wget --no-check-certificate ${RAY_URL}
 unzip Xray-linux-64.zip
 rm -f Xray-linux-64.zip
 chmod +x ./xray
+ls -al
 
 cd /wwwroot
 tar xvf wwwroot.tar.gz
