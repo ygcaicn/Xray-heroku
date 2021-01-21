@@ -59,7 +59,7 @@ fi
 
 sed -e "/^#/d"\
     -e "s/\${PORT}/${PORT}/g"\
-    -e "s|\${V2_Path}|${V2_Path}|g"\
+    -e "s|\${Xray_Path}|${Xray_Path}|g"\
     -e "s|\${Share_Path}|${Share_Path}|g"\
     -e "$s"\
     /conf/nginx.template.conf > /etc/nginx/conf.d/ray.conf
@@ -71,7 +71,7 @@ if [ "$AppName" = "no" ]; then
   echo "不生成分享链接"
 else
   [ ! -d /wwwroot/${Share_Path} ] && mkdir /wwwroot/${Share_Path}
-  path=$(echo -n ${V2_Path}" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
+  path=$(echo -n "${V2_Path}" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
   link="vless://${UUID}@${AppName}.herokuapp.com:443?path=${path}&security=tls&encryption=none&type=ws#${AppName}-herokuapp" 
   echo -n "${link}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
   echo -n "${link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vless.png
