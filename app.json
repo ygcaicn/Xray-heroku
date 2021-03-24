@@ -24,7 +24,7 @@
     },
     
     "Share_Path": {
-      "description": "Share path, /share233/index.html订阅链接，/share233/vmess.png二维码",
+      "description": "Share path, /share233/index.html查看vmess://**分享, /share233/sub.html为订阅链接，/share233/vmess.png为分享二维码",
       "value": "/share233"
     },
 

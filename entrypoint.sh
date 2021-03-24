@@ -89,8 +89,9 @@ EOF
 
   [ ! -d /wwwroot/${Share_Path} ] && mkdir /wwwroot/${Share_Path}
   vmess="vmess://$(cat /xraybin/vmess.json | jq -c | base64 -w 0)"
+  echo -n "${vmess}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
   link=$(echo -n "${vmess}" | tr -d '\n' | base64 -w 0)
-  echo -n "${link}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
+  echo -n "${link}" | tr -d '\n' > /wwwroot/${Share_Path}/sub.html
   cat /wwwroot/${Share_Path}/index.html
   echo -n "${link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vmess.png
 fi
