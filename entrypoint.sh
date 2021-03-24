@@ -92,7 +92,7 @@ EOF
   link=$(echo -n "${vmess}" | tr -d '\n' | base64 -w 0)
   echo -n "${link}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
   cat /wwwroot/${Share_Path}/index.html
-  echo -n "${link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vless.png
+  echo -n "${link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vmess.png
 fi
 
 cd /xraybin
