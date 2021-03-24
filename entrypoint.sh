@@ -71,9 +71,25 @@ cat /etc/nginx/conf.d/ray.conf
 if [ "$AppName" = "no" ]; then
   echo "不生成分享链接"
 else
+cat <<-EOF > /xraybin/vmess.json
+{
+    "v": "2",
+    "ps": "${AppName}.herokuapp.com",
+    "add": "${AppName}.herokuapp.com",
+    "port": "443",
+    "id": "${UUID}",
+    "aid": "0",
+    "net": "ws",
+    "type": "none",
+    "host": "",
+    "path": "${Xray_Path}",
+    "tls": "tls"
+}
+EOF
+
   [ ! -d /wwwroot/${Share_Path} ] && mkdir /wwwroot/${Share_Path}
-  path=$(echo -n "${Xray_Path}" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g')
-  link="vless://${UUID}@${AppName}.herokuapp.com:443?path=${path}&security=tls&encryption=none&type=ws#${AppName}-herokuapp" 
+  vmess="vmess://$(cat /xraybin/vmess.json | base64 -w 0)"
+  link=$(echo -n "${vmess}" | tr -d '\n' | base64 -w 0)
   echo -n "${link}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
   cat /wwwroot/${Share_Path}/index.html
   echo -n "${link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vless.png
