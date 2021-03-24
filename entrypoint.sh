@@ -88,7 +88,7 @@ cat <<-EOF > /xraybin/vmess.json
 EOF
 
   [ ! -d /wwwroot/${Share_Path} ] && mkdir /wwwroot/${Share_Path}
-  vmess="vmess://$(cat /xraybin/vmess.json | base64 -w 0)"
+  vmess="vmess://$(cat /xraybin/vmess.json | jq -c | base64 -w 0)"
   link=$(echo -n "${vmess}" | tr -d '\n' | base64 -w 0)
   echo -n "${link}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
   cat /wwwroot/${Share_Path}/index.html
