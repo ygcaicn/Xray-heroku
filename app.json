@@ -1,10 +1,10 @@
 {
   "name": "Xray快速部署",
-  "description": "Deploy Xray to Heroku.",
+  "description": "Deploy Xray Vless to Heroku.",
   "keywords": ["V2ray", "Xray"],
   "env": {
     "AppName": {
-      "description": "请输入最上方填写的App Name，用于生成配置和二维码，如果不想生成输入no",
+      "description": "请输入最上方填写的App Name，用于生成客户端配置和二维码，如果不想生成输入no",
       "value": "no"
     },
 
