@@ -24,7 +24,7 @@
             "settings": {
                 "clients": [
                     {
-                        "id": "${UUID}"
+                        "id": "${Vless_UUID}"
                     }
                 ],
                 "decryption": "none"
@@ -34,7 +34,31 @@
                 "security": "none",
                 "wsSettings": {
                     "acceptProxyProtocol": false,
-                    "path": "${Xray_Path}"
+                    "path": "${Vless_Path}"
+                }
+            }
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 12346,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                    "id": "${Vmess_UUID}",
+                    "level": 0,
+                    "alterId": 0,
+                    "email": "love@xray.com"
+                    }
+                ],
+                "disableInsecureEncryption": false
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "wsSettings": {
+                    "acceptProxyProtocol": false,
+                    "path": "${Vmess_Path}"
                 }
             }
         }
