@@ -80,22 +80,16 @@ sed -e "/^#/d"\
 echo /etc/nginx/conf.d/ray.conf
 cat /etc/nginx/conf.d/ray.conf
 
-
-if [ "$AppName" = "no" ]; then
-  echo "不生成分享链接"
-else
-  [ ! -d /wwwroot/${Share_Path} ] && mkdir -p /wwwroot/${Share_Path}
-  path=$(echo -n "${Vless_Path}?ed=2048" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g' -e 's/\?/%3F/g')
-  vless_link="vless://${Vless_UUID}@${AppName}.herokuapp.com:443?path=${path}&security=tls&encryption=none&type=ws#${AppName}-herokuapp-Vless"
-  path=$(echo -n "${Vmess_Path}?ed=2048" | sed -e 's/\//%2F/g' -e 's/=/%3D/g' -e 's/;/%3B/g' -e 's/\?/%3F/g')
-  vmess_link="vmess://${Vmess_UUID}@${AppName}.herokuapp.com:443?path=${path}&security=tls&encryption=none&type=ws#${AppName}-herokuapp-Vmess"
-  echo -n "${vless_link}" | tr -d '\n' > /wwwroot/${Share_Path}/index.html
-  echo "" >> /wwwroot/${Share_Path}/index.html
-  echo -n "${vmess_link}" | tr -d '\n' >> /wwwroot/${Share_Path}/index.html
-  cat /wwwroot/${Share_Path}/index.html
-  echo -n "${vless_link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vless.png
-  echo -n "${vmess_link}" | qrencode -s 6 -o /wwwroot/${Share_Path}/vmess.png
-fi
+[ ! -d /wwwroot/${Share_Path} ] && mkdir -p /wwwroot/${Share_Path}
+sed -e "/^#/d"\
+    -e "s|\${_Vless_Path}|${Vless_Path}|g"\
+    -e "s|\${_Vmess_Path}|${Vmess_Path}|g"\
+    -e "s/\${_Vless_UUID}/${Vless_UUID}/g"\
+    -e "s/\${_Vmess_UUID}/${Vmess_UUID}/g"\
+    -e "$s"\
+    /conf/share.html > /wwwroot/${Share_Path}/index.html
+echo /wwwroot/${Share_Path}/index.html
+cat /wwwroot/${Share_Path}/index.html
 
 cd /xraybin
 ./xray run -c ./config.json &

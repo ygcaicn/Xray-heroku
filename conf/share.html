@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Link</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div id="vless">
+        <h2>Vless</h2>
+        <div id="vless_qr"></div>
+        <code></code>
+    </div>
+    <div id="vmess">
+        <h2>Vmess</h2>
+        <div id="vmess_qr"></div>
+        <code></code>
+    </div>
+</body>
+
+<script>
+
+var Vless_UUID = "${_Vless_UUID}";
+var Vless_Path = "${_Vless_Path}";
+var Vmess_UUID = "${_Vmess_UUID}";
+var Vmess_Path = "${_Vmess_Path}";
+
+var Vless_link = `vless://${Vless_UUID}@${location.hostname}?path=${encodeURIComponent(Vless_Path)}&security=tls&encryption=none&type=ws#${location.hostname}-Vless`
+document.querySelector("#vless code").textContent = Vless_link;
+new QRCode(document.getElementById('vless_qr'), Vless_link);
+
+var Vmess_link = `vmess://${Vmess_UUID}@${location.hostname}?path=${encodeURIComponent(Vmess_Path)}&security=tls&encryption=none&type=ws#${location.hostname}-Vmess`
+document.querySelector("#vmess code").textContent = Vmess_link;
+new QRCode(document.getElementById('vmess_qr'), Vmess_link);
+
+</script>
+</html>
