@@ -20,9 +20,9 @@
 <script>
 
 var Vless_UUID = "${_Vless_UUID}";
-var Vless_Path = "${_Vless_Path}";
+var Vless_Path = "${_Vless_Path}?ed=2048";
 var Vmess_UUID = "${_Vmess_UUID}";
-var Vmess_Path = "${_Vmess_Path}";
+var Vmess_Path = "${_Vmess_Path}?ed=2048";
 
 var Vless_link = `vless://${Vless_UUID}@${location.hostname}?path=${encodeURIComponent(Vless_Path)}&security=tls&encryption=none&type=ws#${location.hostname}-Vless`
 document.querySelector("#vless code").textContent = Vless_link;
