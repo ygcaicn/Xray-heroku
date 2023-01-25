@@ -32,5 +32,6 @@ Vless & Vmess:
     * XTLS/Xray-core
 * VER
 * PORT
+* ProxySite
 
 
