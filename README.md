@@ -24,3 +24,13 @@ Vless & Vmess:
 
 请Fork一下仓库，然后在自己的仓库下点击。
 
+## 环境变量
+
+* MY_TOKEN
+* REPO
+    * v2fly/v2ray-core
+    * XTLS/Xray-core
+* VER
+* PORT
+
+
