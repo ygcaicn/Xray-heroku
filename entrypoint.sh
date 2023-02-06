@@ -75,7 +75,6 @@ sed -e "/^#/d"\
     -e "s|\${_Vmess_Path}|${Vmess_Path}|g"\
     -e "s/\${_Vless_UUID}/${Vless_UUID}/g"\
     -e "s/\${_Vmess_UUID}/${Vmess_UUID}/g"\
-    -e "$s"\
     /conf/share.html > /wwwroot/${Share_Path}/index.html
 echo /wwwroot/${Share_Path}/index.html
 cat /wwwroot/${Share_Path}/index.html
