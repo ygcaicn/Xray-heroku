@@ -52,10 +52,10 @@ echo /raybin/config.json
 cat /raybin/config.json
 
 if [[ -z "${ProxySite}" ]]; then
-  s="s/proxy_pass/#proxy_pass/g"
+  s="s/.+ProxySite.+/#no ProxySite/g"
   echo "site:use local wwwroot html"
 else
-  s="s|\${ProxySite}|${ProxySite}|g"
+  s="s|\\$\{ProxySite\}|${ProxySite}|g"
   echo "site: ${ProxySite}"
 fi
 
@@ -64,7 +64,7 @@ sed -e "/^#/d"\
     -e "s|\${Vless_Path}|${Vless_Path}|g"\
     -e "s|\${Vmess_Path}|${Vmess_Path}|g"\
     -e "s|\${Share_Path}|${Share_Path}|g"\
-    -e "$s"\
+    -E "$s"\
     /conf/nginx.template.conf > /etc/nginx/conf.d/ray.conf
 echo /etc/nginx/conf.d/ray.conf
 cat /etc/nginx/conf.d/ray.conf
