@@ -52,10 +52,10 @@ echo /raybin/config.json
 cat /raybin/config.json
 
 if [[ -z "${ProxySite}" ]]; then
-  s="s/.+\\$\{ProxySite\}.+/#no ProxySite/g"
+  s="s/#ProxySite/#no ProxySite/g"
   echo "site:use local wwwroot html"
 else
-  s="s|\\$\{ProxySite\}|${ProxySite}|g"
+  s="s|#ProxySite|proxy_pass https://${ProxySite};|g"
   echo "site: ${ProxySite}"
 fi
 
